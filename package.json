@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@openzeppelin/contracts": "^4.4.0",
     "@remix-project/remixd": "^0.5.5",
+    "openzeppelin-solidity": "^4.4.0",
     "truffle-hdwallet-provider": "^1.0.17"
   }
 }
