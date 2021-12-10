@@ -22,24 +22,24 @@ contract SantaToken is ERC721URIStorage {
         address gifter;
     }
 
-    constructor() ERC721URIStorage("SantaToken", "SNTA") {}
+    constructor() ERC721("SantaToken", "SNTA") {}
 
     // custodian is our account
     function mintNFT(
         string memory _tokenURI,
-        uint256 _price,
+        uint256 price,
         address _custodian
-    ) {
+    ) public {
         uint256 newItemId = _tokenIds.current();
 
         // in case we want them to be able to mint their own nfts as a stretch goal
         _safeMint(msg.sender, newItemId);
-        _setTokenURI(newItemId, tokenURI);
+        _setTokenURI(newItemId, _tokenURI);
         // custodian can transfer
-        approve(custodian, newItemId);
+        approve(_custodian, newItemId);
 
         NFTForSale memory token = NFTForSale(
-            newItemID,
+            newItemId,
             price,
             false,
             _custodian,
@@ -52,25 +52,25 @@ contract SantaToken is ERC721URIStorage {
     // display price of NFT
     function displayPrice(uint256 _itemId) external view returns (uint256) {
         NFTForSale storage nftOnSale = _listed[_itemId];
-        return nftOnSale._price;
+        return nftOnSale.price;
     }
 
     // called by wishlist - custodian account
     function transferNFT(
-        address _currentOwner,
+        // address _currentOwner,
         address _newOwner,
         uint256 _itemId
     ) external {
         // use _currentOwner?
-        safeTransferFrom(_listed[_itemId].owner, _newOwner, _listed[_itemId]);
+        transferFrom(_listed[_itemId].owner, _newOwner, _listed[_itemId].id);
     }
 
-    function markAsSold(uint256 _itemId) internal {
+    function markAsSold(uint256 _itemId) public {
         NFTForSale storage nft = _listed[_itemId];
         nft.isSold = true;
     }
 
-    function setGifter(uint256 _itemId, address _gifter) internal {
+    function setGifter(uint256 _itemId, address _gifter) public {
         NFTForSale storage nft = _listed[_itemId];
         nft.gifter = _gifter;
     }
