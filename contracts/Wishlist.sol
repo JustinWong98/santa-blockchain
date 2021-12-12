@@ -3,11 +3,11 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./Token.sol";
 
-contract Wishlist is SantaToken{
+contract Wishlist is SantaToken {
     // map to wish
     // use the ids generated in our token
     mapping(uint256 => address) public wishes;
-    // map inapp currency 
+    // map inapp currency
     mapping(address => uint256) public points;
 
     // list of NFTs

@@ -120,4 +120,14 @@ contract SantaToken is ERC721URIStorage {
         NFTForSale storage nft = _listed[_itemId];
         nft.gifter = _gifter;
     }
+
+    function getAllListed() external view returns(NFTForSale[] memory) {
+    NFTForSale[] memory result;
+    uint counter = 0;
+    for (uint i = 0; i < _listed.length; i++) {
+        result[counter] = _listed[i];
+        counter++;
+    }
+    return result;
+  }
 }
