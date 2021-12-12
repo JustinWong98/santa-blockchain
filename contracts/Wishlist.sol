@@ -3,10 +3,11 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./Token.sol";
 
-contract Wishlist {
+contract Wishlist is SantaToken{
     // map to wish
+    // use the ids generated in our token
     mapping(uint256 => address) public wishes;
-    // map inapp currency
+    // map inapp currency 
     mapping(address => uint256) public points;
 
     // list of NFTs
@@ -16,11 +17,13 @@ contract Wishlist {
 
     // if user hasn't joined before
     function initUser(address _from) public {
-        points[_from] = 0;
+        require(points[_from] == 0);
+        points[_from] = 1;
     }
 
     // create a wish
     function createWish(address _from, uint256 _itemId) public {
+        require(wishes[_itemId] == address(0));
         wishes[_itemId] = _from;
     }
 
@@ -39,6 +42,7 @@ contract Wishlist {
         token.markAsSold(_itemId);
         // we need to store the buyers address which is tied to the NFT now
         token.setGifter(_itemId, _from);
+        points[_from] += 1;
     }
 
     // redeem incentve

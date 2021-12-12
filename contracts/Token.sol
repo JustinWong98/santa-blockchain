@@ -8,8 +8,11 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract SantaToken is ERC721URIStorage {
+    // using SafeMath for uint256;
     using Counters for Counters.Counter;
 
+    uint256 public tokenPrice = 200000000000000;
+    address custodian;
     Counters.Counter public _tokenIds;
     NFTForSale[] public _listed;
     struct NFTForSale {
@@ -20,30 +23,73 @@ contract SantaToken is ERC721URIStorage {
         address owner;
         // gifter should just be one of our accounts until it is actually gifted
         address gifter;
+        string name;
+        string description;
+        string imgURL;
     }
 
-    constructor() ERC721("SantaToken", "SNTA") {}
+    constructor() ERC721("SantaToken", "SNTA") {
+        // _setBaseURI(
+        //     "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/"
+        // );
+        // custodian should now equal to deployed address, how to get it?
+        mintNFT(
+            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_100.png",
+            tokenPrice,
+            "CXGod",
+            "The bad boy professional artist/photoshopper - he is a nocturnal creature that only comes alive at night."
+        );
+        mintNFT(
+            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_96.png",
+            tokenPrice,
+            "Akira",
+            "Akira the unfortunate teacher - cursed with a weird rebellious batch for his last batch of bootcamp students."
+        );
+        mintNFT(
+            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_99.png",
+            tokenPrice,
+            "Shing Nan",
+            "CXGod's true arch nemesis - the champion of both shit stirring and libraries."
+        );
+        mintNFT(
+            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_97.png",
+            tokenPrice,
+            "JWong",
+            "His lungs are probably collapsed from using the V for so long."
+        );
+        mintNFT(
+            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_98.png",
+            tokenPrice,
+            "Jia En the Polar Bear",
+            "Her back hurts from carrying projects."
+        );
+    }
 
     // custodian is our account
     function mintNFT(
         string memory _tokenURI,
         uint256 price,
-        address _custodian
+        string memory _name,
+        string memory _description
     ) public {
         uint256 newItemId = _tokenIds.current();
 
         // in case we want them to be able to mint their own nfts as a stretch goal
+        // for now, it could just be whoever our creator address/custodian is
         _safeMint(msg.sender, newItemId);
         _setTokenURI(newItemId, _tokenURI);
         // custodian can transfer
-        approve(_custodian, newItemId);
+        approve(custodian, newItemId);
 
         NFTForSale memory token = NFTForSale(
             newItemId,
             price,
             false,
-            _custodian,
-            _custodian
+            custodian,
+            custodian,
+            _name,
+            _description,
+            _tokenURI
         );
         _listed.push(token);
         _tokenIds.increment();
