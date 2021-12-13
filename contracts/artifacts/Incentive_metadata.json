@@ -6,6 +6,11 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -81,6 +86,19 @@
 				"type": "event"
 			},
 			{
+				"inputs": [],
+				"name": "_incentiveId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -88,7 +106,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "_listed",
+				"name": "_incentiveList",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -96,33 +114,13 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "uint256",
-						"name": "price",
-						"type": "uint256"
-					},
-					{
 						"internalType": "bool",
-						"name": "isSold",
+						"name": "isClaimed",
 						"type": "bool"
-					},
-					{
-						"internalType": "bool",
-						"name": "wishCreated",
-						"type": "bool"
-					},
-					{
-						"internalType": "address",
-						"name": "wisher",
-						"type": "address"
 					},
 					{
 						"internalType": "address",
 						"name": "owner",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "gifter",
 						"type": "address"
 					},
 					{
@@ -139,19 +137,6 @@
 						"internalType": "string",
 						"name": "imgURL",
 						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "_tokenIds",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "_value",
-						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -197,126 +182,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_from",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_itemId",
-						"type": "uint256"
-					}
-				],
-				"name": "buyWish",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_from",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_itemId",
-						"type": "uint256"
-					}
-				],
-				"name": "createWish",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_itemId",
-						"type": "uint256"
-					}
-				],
-				"name": "displayPrice",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getAllListed",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "price",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "isSold",
-								"type": "bool"
-							},
-							{
-								"internalType": "bool",
-								"name": "wishCreated",
-								"type": "bool"
-							},
-							{
-								"internalType": "address",
-								"name": "wisher",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "owner",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "gifter",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "description",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "imgURL",
-								"type": "string"
-							}
-						],
-						"internalType": "struct SantaToken.NFTForSale[]",
-						"name": "",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "uint256",
 						"name": "tokenId",
 						"type": "uint256"
@@ -331,116 +196,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_from",
-						"type": "address"
-					}
-				],
-				"name": "getPoints",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getWishCreated",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "price",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "isSold",
-								"type": "bool"
-							},
-							{
-								"internalType": "bool",
-								"name": "wishCreated",
-								"type": "bool"
-							},
-							{
-								"internalType": "address",
-								"name": "wisher",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "owner",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "gifter",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "description",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "imgURL",
-								"type": "string"
-							}
-						],
-						"internalType": "struct SantaToken.NFTForSale[]",
-						"name": "result",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "incentiveNFT",
-				"outputs": [
-					{
-						"internalType": "contract Incentive",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_from",
-						"type": "address"
-					}
-				],
-				"name": "initUser",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -470,29 +225,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_itemId",
-						"type": "uint256"
-					}
-				],
-				"name": "markAsSold",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "_tokenURI",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "price",
-						"type": "uint256"
-					},
-					{
 						"internalType": "string",
 						"name": "_name",
 						"type": "string"
@@ -501,9 +233,14 @@
 						"internalType": "string",
 						"name": "_description",
 						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_incentiveURI",
+						"type": "string"
 					}
 				],
-				"name": "mintNFT",
+				"name": "mintIncentive",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -538,43 +275,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "points",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_from",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_itemId",
-						"type": "uint256"
-					}
-				],
-				"name": "redeem",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -649,24 +349,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_itemId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "_gifter",
-						"type": "address"
-					}
-				],
-				"name": "setGifter",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "bytes4",
 						"name": "interfaceId",
 						"type": "bytes4"
@@ -691,32 +373,6 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "token",
-				"outputs": [
-					{
-						"internalType": "contract SantaToken",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "tokenPrice",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -762,43 +418,6 @@
 				"name": "transferFrom",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_newOwner",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_itemId",
-						"type": "uint256"
-					}
-				],
-				"name": "transferNFT",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "wishes",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -855,7 +474,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Wishlist.sol": "Wishlist"
+			"contracts/Incentive.sol": "Incentive"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -958,27 +577,11 @@
 			]
 		},
 		"contracts/Incentive.sol": {
-			"keccak256": "0x7993b984ad627ef207d80a526ba5cbf0d8e523f553ce816ee8a445c5322539cb",
+			"keccak256": "0x3577f759a864e056dae672b514c0c925d1050d6cba98a93fc861f87f52c6b975",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8b74f3049827d3df180a6a4a602d4df7acc49173a84fd0d8bcb71aa5fb774b5d",
-				"dweb:/ipfs/QmVsHxpaVnqo9APA6xkEYiiJoBxmVTw7AA3ev2sjCiSoXh"
-			]
-		},
-		"contracts/Token.sol": {
-			"keccak256": "0xfd50124570b1c8704ca7f4f6598af9a2e92d29f8df6351774c846698591b046d",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://5a332503ebcb39b2711997220f3158a331959a5c29547f0360ed127374dbd811",
-				"dweb:/ipfs/QmcPqc5k7FYG9XFmwG2iMW8Yq7cAdwoHJE4ZsxGd42ndjg"
-			]
-		},
-		"contracts/Wishlist.sol": {
-			"keccak256": "0xa9f866ba08ac3952e7256f71bdba042bf4b0194fdd6252339823c177034b0244",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://eb3f23dfd7032657375761c5d7390588299e619a59746fb516beb47ac8badb3d",
-				"dweb:/ipfs/QmXAviFUTZ99UhV4V7yJZuC7CD1ZpTXBahctgLGq2aWwbZ"
+				"bzz-raw://50ec7f49308062f44333e5519b9a3fa3d2b8f2e656ef98e7732e4d2ec3fdcf1c",
+				"dweb:/ipfs/QmWX4xw9hAiLHNDugydNFfK2Bec2baBTJP3M5WB1sZNKmo"
 			]
 		}
 	},

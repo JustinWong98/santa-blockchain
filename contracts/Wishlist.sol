@@ -2,6 +2,7 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 import "./Token.sol";
+import "./Incentive.sol";
 
 contract Wishlist is SantaToken {
     // map to wish
@@ -10,8 +11,8 @@ contract Wishlist is SantaToken {
     // map inapp currency
     mapping(address => uint256) public points;
 
-    // list of NFTs
-
+    // import incentives
+    Incentive public incentiveNFT;
     // import Tokens
     SantaToken public token;
 
@@ -55,7 +56,8 @@ contract Wishlist is SantaToken {
         require(points[_from] > 0);
         points[_from] -= 1;
         // incentive nft now points to _from
-        token.transferNFT(_from, _itemId);
+        incentiveNFT.transferIncentive(_from, _itemId);
+        // do we need to change owner manually?
     }
 
     // view points
