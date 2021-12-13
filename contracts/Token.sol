@@ -6,8 +6,8 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 // increment IDs when minting
 import "@openzeppelin/contracts/utils/Counters.sol";
-
-contract SantaToken is ERC721URIStorage {
+import "./Incentive.sol";
+contract SantaToken is ERC721URIStorage, Incentive {
     // using SafeMath for uint256;
     using Counters for Counters.Counter;
 
@@ -29,7 +29,7 @@ contract SantaToken is ERC721URIStorage {
         string description;
         string imgURL;
     }
-
+    Incentive public incentiveToken;
     mapping(uint => NFTForSale) filterByWishCreated;
     uint createdWishCounter;
 
@@ -68,6 +68,16 @@ contract SantaToken is ERC721URIStorage {
             "Jia En the Polar Bear",
             "Her back hurts from carrying projects."
         );
+        incentiveToken.mintIncentive(
+            "Tinaes",
+            "The true Santa, setting up drawnames for bootcamp students! Ho ho ho",
+            "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_111.png"
+            );
+        incentiveToken.mintIncentive(
+            "Kai",
+            "The man who gifted us Rocket Academy!",
+            "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_110.png"
+            );
     }
 
     // custodian is our account

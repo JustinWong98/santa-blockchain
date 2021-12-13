@@ -86,6 +86,63 @@
 				"type": "event"
 			},
 			{
+				"inputs": [],
+				"name": "_incentiveId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "_incentiveList",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isClaimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "imgURL",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -220,6 +277,51 @@
 			},
 			{
 				"inputs": [],
+				"name": "getAllIncentive",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isClaimed",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imgURL",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Incentive.incentiveNFT[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getAllListed",
 				"outputs": [
 					{
@@ -304,6 +406,51 @@
 			},
 			{
 				"inputs": [],
+				"name": "getUnclaimedIncentive",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isClaimed",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imgURL",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Incentive.incentiveNFT[]",
+						"name": "result",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getWishCreated",
 				"outputs": [
 					{
@@ -368,6 +515,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "incentiveToken",
+				"outputs": [
+					{
+						"internalType": "contract Incentive",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -400,6 +560,29 @@
 					}
 				],
 				"name": "markAsSold",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_incentiveURI",
+						"type": "string"
+					}
+				],
+				"name": "mintIncentive",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -651,6 +834,24 @@
 						"type": "uint256"
 					}
 				],
+				"name": "transferIncentive",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_itemId",
+						"type": "uint256"
+					}
+				],
 				"name": "transferNFT",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -812,12 +1013,20 @@
 				"dweb:/ipfs/QmZeBojmgXq821dL1TJKFb58B1FogM9jL3u7hXQ8hTEBKT"
 			]
 		},
-		"contracts/Token.sol": {
-			"keccak256": "0xfd50124570b1c8704ca7f4f6598af9a2e92d29f8df6351774c846698591b046d",
+		"contracts/Incentive.sol": {
+			"keccak256": "0x25e66e755855dded0f065617a077a63c09b69ab650d095bbfe5301e390bad3d2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5a332503ebcb39b2711997220f3158a331959a5c29547f0360ed127374dbd811",
-				"dweb:/ipfs/QmcPqc5k7FYG9XFmwG2iMW8Yq7cAdwoHJE4ZsxGd42ndjg"
+				"bzz-raw://52b5a72d66abd5a963262dc6717c3965bb8015e87a05dbd5b79dcf2e82a6be0e",
+				"dweb:/ipfs/QmeKKQA5b6nQVdwh4gWVRCtSuGNbVp3ZsoFCib7XA5wSTq"
+			]
+		},
+		"contracts/Token.sol": {
+			"keccak256": "0xb6daf848e06369ead308ba40535626a2798373b3d204c255f2697c3eef49c30f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://36357e22487b5390fab6a580e8c5005ab4f1916905c083cde1201b17480d8f29",
+				"dweb:/ipfs/QmZzr5jK3zBSZZJzKKaCoKbKyR5Q7xHotRJNKjzgo3jj5c"
 			]
 		}
 	},

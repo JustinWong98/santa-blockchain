@@ -81,6 +81,63 @@
 				"type": "event"
 			},
 			{
+				"inputs": [],
+				"name": "_incentiveId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "_incentiveList",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isClaimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "imgURL",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -251,6 +308,51 @@
 			},
 			{
 				"inputs": [],
+				"name": "getAllIncentive",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isClaimed",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imgURL",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Incentive.incentiveNFT[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getAllListed",
 				"outputs": [
 					{
@@ -354,6 +456,51 @@
 			},
 			{
 				"inputs": [],
+				"name": "getUnclaimedIncentive",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isClaimed",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imgURL",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Incentive.incentiveNFT[]",
+						"name": "result",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getWishCreated",
 				"outputs": [
 					{
@@ -419,7 +566,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "incentiveNFT",
+				"name": "incentiveToken",
 				"outputs": [
 					{
 						"internalType": "contract Incentive",
@@ -476,6 +623,29 @@
 					}
 				],
 				"name": "markAsSold",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_incentiveURI",
+						"type": "string"
+					}
+				],
+				"name": "mintIncentive",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -777,6 +947,24 @@
 						"type": "uint256"
 					}
 				],
+				"name": "transferIncentive",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_itemId",
+						"type": "uint256"
+					}
+				],
 				"name": "transferNFT",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -958,27 +1146,27 @@
 			]
 		},
 		"contracts/Incentive.sol": {
-			"keccak256": "0x7993b984ad627ef207d80a526ba5cbf0d8e523f553ce816ee8a445c5322539cb",
+			"keccak256": "0x25e66e755855dded0f065617a077a63c09b69ab650d095bbfe5301e390bad3d2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8b74f3049827d3df180a6a4a602d4df7acc49173a84fd0d8bcb71aa5fb774b5d",
-				"dweb:/ipfs/QmVsHxpaVnqo9APA6xkEYiiJoBxmVTw7AA3ev2sjCiSoXh"
+				"bzz-raw://52b5a72d66abd5a963262dc6717c3965bb8015e87a05dbd5b79dcf2e82a6be0e",
+				"dweb:/ipfs/QmeKKQA5b6nQVdwh4gWVRCtSuGNbVp3ZsoFCib7XA5wSTq"
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0xfd50124570b1c8704ca7f4f6598af9a2e92d29f8df6351774c846698591b046d",
+			"keccak256": "0xb6daf848e06369ead308ba40535626a2798373b3d204c255f2697c3eef49c30f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5a332503ebcb39b2711997220f3158a331959a5c29547f0360ed127374dbd811",
-				"dweb:/ipfs/QmcPqc5k7FYG9XFmwG2iMW8Yq7cAdwoHJE4ZsxGd42ndjg"
+				"bzz-raw://36357e22487b5390fab6a580e8c5005ab4f1916905c083cde1201b17480d8f29",
+				"dweb:/ipfs/QmZzr5jK3zBSZZJzKKaCoKbKyR5Q7xHotRJNKjzgo3jj5c"
 			]
 		},
 		"contracts/Wishlist.sol": {
-			"keccak256": "0xa9f866ba08ac3952e7256f71bdba042bf4b0194fdd6252339823c177034b0244",
+			"keccak256": "0xded3718af79ff8aea43bb78c96096b741b0061c33b871a2419655cd9f80880a0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://eb3f23dfd7032657375761c5d7390588299e619a59746fb516beb47ac8badb3d",
-				"dweb:/ipfs/QmXAviFUTZ99UhV4V7yJZuC7CD1ZpTXBahctgLGq2aWwbZ"
+				"bzz-raw://3a6ffa69b9b84ad3f7e9993853147bf7b23903998bffaad90468d4454b831ace",
+				"dweb:/ipfs/QmUJG6dHRuJJno8gHP7z7V4krQC45N7N9uY2P3o3z4AP7m"
 			]
 		}
 	},
