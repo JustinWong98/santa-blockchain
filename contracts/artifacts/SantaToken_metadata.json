@@ -360,7 +360,72 @@
 							}
 						],
 						"internalType": "struct SantaToken.NFTForSale[]",
-						"name": "result",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getWishUncreated",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isSold",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "wishCreated",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "wisher",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "gifter",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imgURL",
+								"type": "string"
+							}
+						],
+						"internalType": "struct SantaToken.NFTForSale[]",
+						"name": "",
 						"type": "tuple[]"
 					}
 				],
@@ -813,11 +878,11 @@
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0xfd50124570b1c8704ca7f4f6598af9a2e92d29f8df6351774c846698591b046d",
+			"keccak256": "0x4f2dbfd3facbc241bafbbc5c6644f2b6351b16d59e9d14e36508986fc4125165",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5a332503ebcb39b2711997220f3158a331959a5c29547f0360ed127374dbd811",
-				"dweb:/ipfs/QmcPqc5k7FYG9XFmwG2iMW8Yq7cAdwoHJE4ZsxGd42ndjg"
+				"bzz-raw://ca7cc1f066b4ee6e40dddb0cd80b09d52fc1095fc3b95dafb45cc81ae0805876",
+				"dweb:/ipfs/QmWC6stLeNC4UgcDC6nKDaEfPhoVKdkj58aTJQUV8417xC"
 			]
 		}
 	},
