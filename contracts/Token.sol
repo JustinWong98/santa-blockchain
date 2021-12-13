@@ -133,29 +133,29 @@ contract SantaToken is ERC721URIStorage {
     }
 
     function getWishCreated() external view returns (NFTForSale[] memory) {
-        NFTForSale[] memory result = new NFTForSale[](createdWishCounter);
+        NFTForSale[] memory wishesCreated = new NFTForSale[](createdWishCounter);
         // uint default value is 0
         uint tempCount;
         for (uint i = 0; i < createdWishCounter; i++) {
             if (_listed[i].wishCreated == true) {
-                result[tempCount] = _listed[i];
+                wishesCreated[tempCount] = _listed[i];
                 tempCount++;
             }
         }
-        return result;
+        return wishesCreated;
     }
 
     function getWishUncreated() external view returns (NFTForSale[] memory) {
         uint uncreatedWishLength = _listed.length - createdWishCounter;
-        NFTForSale[] memory result = new NFTForSale[](uncreatedWishLength);
+        NFTForSale[] memory wishesUncreated = new NFTForSale[](uncreatedWishLength);
         // uint default value is 0
         uint tempCount;
         for (uint i = 0; i < uncreatedWishLength; i++) {
             if (_listed[i].wishCreated != true) {
-                result[tempCount] = _listed[i];
+                wishesUncreated[tempCount] = _listed[i];
                 tempCount++;
             }
         }
-        return result;
+        return wishesUncreated;
     }
 }
