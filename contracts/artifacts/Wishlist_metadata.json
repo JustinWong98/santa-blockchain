@@ -106,6 +106,16 @@
 						"type": "bool"
 					},
 					{
+						"internalType": "bool",
+						"name": "wishCreated",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "wisher",
+						"type": "address"
+					},
+					{
 						"internalType": "address",
 						"name": "owner",
 						"type": "address"
@@ -261,6 +271,16 @@
 								"type": "bool"
 							},
 							{
+								"internalType": "bool",
+								"name": "wishCreated",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "wisher",
+								"type": "address"
+							},
+							{
 								"internalType": "address",
 								"name": "owner",
 								"type": "address"
@@ -327,6 +347,71 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getWishCreated",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isSold",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "wishCreated",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "wisher",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "gifter",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imgURL",
+								"type": "string"
+							}
+						],
+						"internalType": "struct SantaToken.NFTForSale[]",
+						"name": "result",
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -860,19 +945,19 @@
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0x03b5d35a91f4da33c597157f587a1b9c2d2f0cc266b7f25d9b41924682f39cc3",
+			"keccak256": "0xfd50124570b1c8704ca7f4f6598af9a2e92d29f8df6351774c846698591b046d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://be466f737ef47588bac4f55415887445e24bfd17188ad3ca83469a65d5a5966d",
-				"dweb:/ipfs/QmfSFJLzDcc1mtS1enHkdNFP1L7TTUfTM7hS4zhaTyxcZt"
+				"bzz-raw://5a332503ebcb39b2711997220f3158a331959a5c29547f0360ed127374dbd811",
+				"dweb:/ipfs/QmcPqc5k7FYG9XFmwG2iMW8Yq7cAdwoHJE4ZsxGd42ndjg"
 			]
 		},
 		"contracts/Wishlist.sol": {
-			"keccak256": "0x67b8e94d970c8fc4aa1d233e823fbdcaf8a9805c56e4849ff794d232ab0e7b35",
+			"keccak256": "0xd4619f1302d37543e6f8b8311c6e6e8a9eef154680c66479d41d24cf3786764d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5b5202431f10d1487f7323c5f4591571d4bd6f867b1ef370eb7a2057ca293f36",
-				"dweb:/ipfs/QmSH8vMQyUtyy6EUwvUKgmsSQCnBR14gCzsHFTcq1QmpEf"
+				"bzz-raw://058fe1b691430de59b2a9dcc91a39c96a5f14ac34f86f03607a0ecb74eebf6bd",
+				"dweb:/ipfs/QmSuAVvYew1Wqi6Pgk1o88DVQmy5got4LHMbexSRe1CNxR"
 			]
 		}
 	},

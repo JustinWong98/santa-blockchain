@@ -111,6 +111,16 @@
 						"type": "bool"
 					},
 					{
+						"internalType": "bool",
+						"name": "wishCreated",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "wisher",
+						"type": "address"
+					},
+					{
 						"internalType": "address",
 						"name": "owner",
 						"type": "address"
@@ -230,6 +240,16 @@
 								"type": "bool"
 							},
 							{
+								"internalType": "bool",
+								"name": "wishCreated",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "wisher",
+								"type": "address"
+							},
+							{
 								"internalType": "address",
 								"name": "owner",
 								"type": "address"
@@ -277,6 +297,71 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getWishCreated",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isSold",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "wishCreated",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "wisher",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "gifter",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imgURL",
+								"type": "string"
+							}
+						],
+						"internalType": "struct SantaToken.NFTForSale[]",
+						"name": "result",
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -728,11 +813,11 @@
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0x03b5d35a91f4da33c597157f587a1b9c2d2f0cc266b7f25d9b41924682f39cc3",
+			"keccak256": "0xfd50124570b1c8704ca7f4f6598af9a2e92d29f8df6351774c846698591b046d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://be466f737ef47588bac4f55415887445e24bfd17188ad3ca83469a65d5a5966d",
-				"dweb:/ipfs/QmfSFJLzDcc1mtS1enHkdNFP1L7TTUfTM7hS4zhaTyxcZt"
+				"bzz-raw://5a332503ebcb39b2711997220f3158a331959a5c29547f0360ed127374dbd811",
+				"dweb:/ipfs/QmcPqc5k7FYG9XFmwG2iMW8Yq7cAdwoHJE4ZsxGd42ndjg"
 			]
 		}
 	},

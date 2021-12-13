@@ -25,6 +25,10 @@ contract Wishlist is SantaToken {
     function createWish(address _from, uint256 _itemId) public {
         require(wishes[_itemId] == address(0));
         wishes[_itemId] = _from;
+        _listed[_itemId].wisher = _from;
+        _listed[_itemId].wishCreated = true;
+        filterByWishCreated[createdWishCounter] = _listed[_itemId];
+        createdWishCounter++;
     }
 
     // fulfill a wish

@@ -19,6 +19,8 @@ contract SantaToken is ERC721URIStorage {
         uint256 id;
         uint256 price;
         bool isSold;
+        bool wishCreated;
+        address wisher;
         // may not need this since we have it in wishlist already as a mapping
         address owner;
         // gifter should just be one of our accounts until it is actually gifted
@@ -27,6 +29,9 @@ contract SantaToken is ERC721URIStorage {
         string description;
         string imgURL;
     }
+
+    mapping(uint => NFTForSale) filterByWishCreated;
+    uint createdWishCounter;
 
     constructor() ERC721("SantaToken", "SNTA") {
         // _setBaseURI(
@@ -85,6 +90,8 @@ contract SantaToken is ERC721URIStorage {
             newItemId,
             price,
             false,
+            false,
+            custodian,
             custodian,
             custodian,
             _name,
@@ -121,13 +128,23 @@ contract SantaToken is ERC721URIStorage {
         nft.gifter = _gifter;
     }
 
-    function getAllListed() external view returns(NFTForSale[] memory) {
-    NFTForSale[] memory result;
-    uint counter = 0;
-    for (uint i = 0; i < _listed.length; i++) {
-        result[counter] = _listed[i];
-        counter++;
+    function getAllListed() external view returns (NFTForSale[] memory) {
+        return _listed;
     }
-    return result;
-  }
+
+    function getWishCreated() external view returns (NFTForSale[] memory result) {
+        NFTForSale[] memory tempResult = new NFTForSale[](createdWishCounter);
+        uint tempCount;
+        for (uint i = 0; i < createdWishCounter; i++) {
+            if (_listed[i].wishCreated == true) {
+                result[tempCount] = _listed[i];
+                tempCount++;
+            }
+        }
+        result = new NFTForSale[](tempCount);
+        for (uint j = 0; j <tempCount; j++) {
+            result[j] = tempResult[j];
+        }
+        return result;
+    }
 }
