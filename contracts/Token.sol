@@ -6,8 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 // increment IDs when minting
 import "@openzeppelin/contracts/utils/Counters.sol";
-
-contract SantaToken is ERC721URIStorage {
+contract SantaToken is ERC721URIStorage{
     // using SafeMath for uint256;
     using Counters for Counters.Counter;
 
@@ -29,7 +28,6 @@ contract SantaToken is ERC721URIStorage {
         string description;
         string imgURL;
     }
-
     mapping(uint => NFTForSale) filterByWishCreated;
     uint createdWishCounter;
 

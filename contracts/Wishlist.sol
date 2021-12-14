@@ -3,16 +3,15 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./Token.sol";
 import "./Incentive.sol";
-
-contract Wishlist is SantaToken {
+contract Wishlist is SantaToken, Incentive{
     // map to wish
     // use the ids generated in our token
     mapping(uint256 => address) public wishes;
     // map inapp currency
     mapping(address => uint256) public points;
-
+    
     // import incentives
-    Incentive public incentiveNFT;
+    Incentive public incentiveToken;
     // import Tokens
     SantaToken public token;
 
@@ -56,7 +55,7 @@ contract Wishlist is SantaToken {
         require(points[_from] > 0);
         points[_from] -= 1;
         // incentive nft now points to _from
-        incentiveNFT.transferIncentive(_from, _itemId);
+        incentiveToken.transferIncentive(_from, _itemId);
         // do we need to change owner manually?
     }
 
