@@ -2,8 +2,8 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 import "./Token.sol";
-
-contract Wishlist is SantaToken{
+import "./Incentive.sol";
+contract Wishlist is SantaToken, Incentive{
     // map to wish
     // use the ids generated in our token
     mapping(uint256 => address) public wishes;
@@ -11,7 +11,7 @@ contract Wishlist is SantaToken{
     mapping(address => uint256) public points;
     
     // import incentives
-
+    Incentive public incentiveToken;
     // import Tokens
     SantaToken public token;
 

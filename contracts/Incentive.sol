@@ -20,6 +20,19 @@ contract Incentive{
         string imgURL;
     }
 
+    constructor(){
+        mintIncentive(
+            "Tinaes",
+            "The true Santa, setting up drawnames for bootcamp students! Ho ho ho",
+            "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_111.png"
+            );
+        mintIncentive(
+            "Kai",
+            "The man who gifted us Rocket Academy!",
+            "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_110.png"
+            );
+    }
+
     incentiveNFT[] public _incentiveList;
 
     mapping(uint => incentiveNFT) filterByUnclaimedIncentive;
