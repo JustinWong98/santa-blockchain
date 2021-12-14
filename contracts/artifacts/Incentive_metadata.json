@@ -270,11 +270,11 @@
 			]
 		},
 		"contracts/Incentive.sol": {
-			"keccak256": "0x3bb35437582186b2979c83f8ed977ebaf10f0087c3459c1b7d8797d3163fb5cc",
+			"keccak256": "0x3771882216da1b2fe8abfbb2629cffa1bf73f5687e56541ecb672c009ef09ce0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fc36cd5ac115c7b6eec2ae99aab37c7fcf12ea03b310eb8eb437fd10a214b3a4",
-				"dweb:/ipfs/QmaHHYCpXBCQFjv6GekPSke4y6f1Q5U9xTf8cxV13aQDg2"
+				"bzz-raw://3ccb057b8c6261dd3807cf855b35b7ea8442b963200a0f7d69875f1c71fc3bd0",
+				"dweb:/ipfs/QmPYzkgU19xkj35oHaQ3pdRubeTiiWMUgqtJrqkfnTfVjT"
 			]
 		}
 	},

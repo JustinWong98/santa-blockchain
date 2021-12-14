@@ -69,6 +69,7 @@ contract Incentive{
         // below only works if incentive.sol is erc721 - causes issues as it needs to be abstract to compile
         // transferFrom(_incentiveList[_itemId].owner, _newOwner, _incentiveList[_itemId].id);
         _incentiveList[_itemId].owner =  _newOwner;
+        _incentiveList[_itemId].isClaimed = true;
     }
 
     function getAllIncentive() external view returns (incentiveNFT[] memory) {
