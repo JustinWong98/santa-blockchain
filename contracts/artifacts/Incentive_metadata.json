@@ -7,6 +7,11 @@
 		"abi": [
 			{
 				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
 				"name": "_incentiveId",
 				"outputs": [
 					{
@@ -101,51 +106,6 @@
 						],
 						"internalType": "struct Incentive.incentiveNFT[]",
 						"name": "",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getUnclaimedIncentive",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "isClaimed",
-								"type": "bool"
-							},
-							{
-								"internalType": "address",
-								"name": "owner",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "description",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "imgURL",
-								"type": "string"
-							}
-						],
-						"internalType": "struct Incentive.incentiveNFT[]",
-						"name": "result",
 						"type": "tuple[]"
 					}
 				],
@@ -310,11 +270,11 @@
 			]
 		},
 		"contracts/Incentive.sol": {
-			"keccak256": "0x25e66e755855dded0f065617a077a63c09b69ab650d095bbfe5301e390bad3d2",
+			"keccak256": "0x3bb35437582186b2979c83f8ed977ebaf10f0087c3459c1b7d8797d3163fb5cc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://52b5a72d66abd5a963262dc6717c3965bb8015e87a05dbd5b79dcf2e82a6be0e",
-				"dweb:/ipfs/QmeKKQA5b6nQVdwh4gWVRCtSuGNbVp3ZsoFCib7XA5wSTq"
+				"bzz-raw://fc36cd5ac115c7b6eec2ae99aab37c7fcf12ea03b310eb8eb437fd10a214b3a4",
+				"dweb:/ipfs/QmaHHYCpXBCQFjv6GekPSke4y6f1Q5U9xTf8cxV13aQDg2"
 			]
 		}
 	},

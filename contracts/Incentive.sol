@@ -75,19 +75,19 @@ contract Incentive{
         return _incentiveList;
     }
 
-    function getUnclaimedIncentive() external view returns (incentiveNFT[] memory result) {
-        incentiveNFT[] memory tempResult = new incentiveNFT[](incentiveCounter);
-        uint tempCount;
-        for (uint i = 0; i < incentiveCounter; i++) {
-            if (_incentiveList[i].isClaimed == false) {
-                result[tempCount] = _incentiveList[i];
-                tempCount++;
-            }
-        }
-        result = new incentiveNFT[](tempCount);
-        for (uint j = 0; j <tempCount; j++) {
-            result[j] = tempResult[j];
-        }
-        return result;
-    }
+    // function getUnclaimedIncentive() external view returns (incentiveNFT[] memory result) {
+    //     incentiveNFT[] memory tempResult = new incentiveNFT[](incentiveCounter);
+    //     uint tempCount;
+    //     for (uint i = 0; i < incentiveCounter; i++) {
+    //         if (_incentiveList[i].isClaimed == false) {
+    //             result[tempCount] = _incentiveList[i];
+    //             tempCount++;
+    //         }
+    //     }
+    //     result = new incentiveNFT[](tempCount);
+    //     for (uint j = 0; j <tempCount; j++) {
+    //         result[j] = tempResult[j];
+    //     }
+    //     return result;
+    // }
 }

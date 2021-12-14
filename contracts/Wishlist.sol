@@ -50,7 +50,7 @@ contract Wishlist is SantaToken, Incentive{
     }
 
     // redeem incentve
-    function redeem(address _from, uint256 _itemId) public {
+    function redeem(address _from, uint _itemId) public {
         // may need to change 0 to how much the NFT costs
         require(points[_from] > 0);
         points[_from] -= 1;

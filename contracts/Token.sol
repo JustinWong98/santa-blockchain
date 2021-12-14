@@ -9,7 +9,6 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract SantaToken is ERC721URIStorage{
     // using SafeMath for uint256;
     using Counters for Counters.Counter;
-
     uint256 public tokenPrice = 200000000000000;
     address custodian;
     Counters.Counter public _tokenIds;
@@ -130,30 +129,30 @@ contract SantaToken is ERC721URIStorage{
         return _listed;
     }
 
-    function getWishCreated() external view returns (NFTForSale[] memory) {
-        NFTForSale[] memory wishesCreated = new NFTForSale[](createdWishCounter);
-        // uint default value is 0
-        uint tempCount;
-        for (uint i = 0; i < _listed.length; i++) {
-            if (_listed[i].wishCreated == true) {
-                wishesCreated[tempCount] = _listed[i];
-                tempCount++;
-            }
-        }
-        return wishesCreated;
-    }
+    // function getWishCreated() external view returns (NFTForSale[] memory) {
+    //     NFTForSale[] memory wishesCreated = new NFTForSale[](createdWishCounter);
+    //     // uint default value is 0
+    //     uint tempCount;
+    //     for (uint i = 0; i < _listed.length; i++) {
+    //         if (_listed[i].wishCreated == true) {
+    //             wishesCreated[tempCount] = _listed[i];
+    //             tempCount++;
+    //         }
+    //     }
+    //     return wishesCreated;
+    // }
 
-    function getWishUncreated() external view returns (NFTForSale[] memory) {
-        uint uncreatedWishLength = _listed.length - createdWishCounter;
-        NFTForSale[] memory wishesUncreated = new NFTForSale[](uncreatedWishLength);
-        // uint default value is 0
-        uint tempCount;
-        for (uint i = 0; i < _listed.length; i++) {
-            if (_listed[i].wishCreated != true) {
-                wishesUncreated[tempCount] = _listed[i];
-                tempCount++;
-            }
-        }
-        return wishesUncreated;
-    }
+    // function getWishUncreated() external view returns (NFTForSale[] memory) {
+    //     uint uncreatedWishLength = _listed.length - createdWishCounter;
+    //     NFTForSale[] memory wishesUncreated = new NFTForSale[](uncreatedWishLength);
+    //     // uint default value is 0
+    //     uint tempCount;
+    //     for (uint i = 0; i < _listed.length; i++) {
+    //         if (_listed[i].wishCreated != true) {
+    //             wishesUncreated[tempCount] = _listed[i];
+    //             tempCount++;
+    //         }
+    //     }
+    //     return wishesUncreated;
+    // }
 }
