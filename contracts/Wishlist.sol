@@ -12,8 +12,6 @@ contract Wishlist is SantaToken, Incentive{
     
     // import incentives
     Incentive public incentiveToken;
-    // import Tokens
-    SantaToken public token;
 
     // if user hasn't joined before
     function initUser(address _from) public {
@@ -33,20 +31,20 @@ contract Wishlist is SantaToken, Incentive{
 
     // fulfill a wish
     function buyWish(address _from, uint256 _itemId) public payable {
-        uint256 price = token.displayPrice(_itemId);
+        uint256 price = displayPrice(_itemId);
         uint256 amountPaid = msg.value;
         require(amountPaid >= price);
         // smart contract owns all the NFTS (nft addresses point to smart contract address)
         // smart contract takes the money
-        address payable currentOwner = payable(token.ownerOf(_itemId));
-        currentOwner.transfer(amountPaid);
+        address payable smartContractor = payable(displayContractor(_itemId));
+        smartContractor.transfer(amountPaid);
         // then smart contract releases the nft to the wishmaker
         // token.transferNFT(wishes[_itemId], _itemId);
         
-        token.markAsSold(_itemId);
+        markAsSold(_itemId);
         // we need to store the buyers address which is tied to the NFT now
-        token.setGifter(_itemId, _from);
-        points[_from] += 1;
+        setGifter(_itemId, _from);
+        points[_from]++;
     }
 
     // redeem incentve
@@ -65,6 +63,6 @@ contract Wishlist is SantaToken, Incentive{
     }
 
     function getOwner(uint256 _itemId) public view returns(address) {
-        return token.ownerOf(_itemId);
+        return ownerOf(_itemId);
     }
 }

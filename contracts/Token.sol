@@ -20,6 +20,8 @@ contract SantaToken is ERC721URIStorage{
         address wisher;
         // may not need this since we have it in wishlist already as a mapping
         address owner;
+        // global storage of contractor address, won't be reset
+        address contractor;
         // gifter should just be one of our accounts until it is actually gifted
         address gifter;
         string name;
@@ -90,6 +92,7 @@ contract SantaToken is ERC721URIStorage{
             msg.sender,
             msg.sender,
             msg.sender,
+            msg.sender,
             _name,
             _description,
             _tokenURI
@@ -99,9 +102,15 @@ contract SantaToken is ERC721URIStorage{
     }
 
     // display price of NFT
-    function displayPrice(uint256 _itemId) external view returns (uint256) {
+    function displayPrice(uint256 _itemId) public view returns (uint256) {
         NFTForSale storage nftOnSale = _listed[_itemId];
         return nftOnSale.price;
+    }
+
+    // display price of NFT
+    function displayContractor(uint256 _itemId) internal view returns (address) {
+        NFTForSale storage nftOnSale = _listed[_itemId];
+        return nftOnSale.contractor;
     }
 
     // called by wishlist - custodian account

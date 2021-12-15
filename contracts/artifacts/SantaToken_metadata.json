@@ -127,6 +127,11 @@
 					},
 					{
 						"internalType": "address",
+						"name": "contractor",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
 						"name": "gifter",
 						"type": "address"
 					},
@@ -252,6 +257,11 @@
 							{
 								"internalType": "address",
 								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "contractor",
 								"type": "address"
 							},
 							{
@@ -748,11 +758,11 @@
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0xaaa28972637ac978b8adadeb4cf58ec9893e75100ccf751d9494bb0046f4dc74",
+			"keccak256": "0x5adb6ac9db60f2b50609fa8b94bf07a41f99c0d13bc8e1c39491ab58d435da52",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://49dfbd2680baa4bce9848f57ad488f0e1230b0ad878df91ec7133a82188c1b9a",
-				"dweb:/ipfs/QmPJqqNPf1UdqHiZp9fTe6Nhwwz7b4BN3XtgakNZB6bJpw"
+				"bzz-raw://630354464ca7cdca316ac44e4c322004e67de4938bc2a798ccba1cdc8574b413",
+				"dweb:/ipfs/QmQ3x2WEoH6J8w79emD8QbfGDTWsz5Duz7KkmiwtEgWE2r"
 			]
 		}
 	},
