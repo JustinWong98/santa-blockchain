@@ -38,7 +38,7 @@ contract Incentive{
     mapping(uint => incentiveNFT) filterByUnclaimedIncentive;
     uint incentiveCounter;
 
-    address incentiveCustodian;
+    address incentiveCustodian = 0x9E4CD52D63e332C08Ba54e80C9827bcd2cA2aEe5;
 
     function mintIncentive(
         string memory _name,

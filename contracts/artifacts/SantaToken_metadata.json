@@ -303,136 +303,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getWishCreated",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "price",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "isSold",
-								"type": "bool"
-							},
-							{
-								"internalType": "bool",
-								"name": "wishCreated",
-								"type": "bool"
-							},
-							{
-								"internalType": "address",
-								"name": "wisher",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "owner",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "gifter",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "description",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "imgURL",
-								"type": "string"
-							}
-						],
-						"internalType": "struct SantaToken.NFTForSale[]",
-						"name": "",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getWishUncreated",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "price",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "isSold",
-								"type": "bool"
-							},
-							{
-								"internalType": "bool",
-								"name": "wishCreated",
-								"type": "bool"
-							},
-							{
-								"internalType": "address",
-								"name": "wisher",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "owner",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "gifter",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "description",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "imgURL",
-								"type": "string"
-							}
-						],
-						"internalType": "struct SantaToken.NFTForSale[]",
-						"name": "",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -878,11 +748,11 @@
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0x749f44d644449b3507d77d44e3ff5ceaf872e93ad77f740aaad2c451f06d9f56",
+			"keccak256": "0xfd7830f8c27526435dd9f09f5f3977d7afacc21a34046f1f426b2b4a451e0884",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://68c02aa0e7a948d4e44aed26a37458584cba1032e85803bd0e0d95e5506556fb",
-				"dweb:/ipfs/Qmdzdt1JwQHcfr1ssu8YUKdK2ehcrUAZVHwgupMSMiAHDw"
+				"bzz-raw://02b3c929263adb40818434794866c5d8d7614177eed9943dc52f6705c950c040",
+				"dweb:/ipfs/QmPiREeH9APmfc118ZaBXQ2sQWJbjvBuahoTZQ2hdCuhjq"
 			]
 		}
 	},

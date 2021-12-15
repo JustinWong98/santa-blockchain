@@ -41,8 +41,8 @@ contract Wishlist is SantaToken, Incentive{
         address payable currentOwner = payable(token.ownerOf(_itemId));
         currentOwner.transfer(amountPaid);
         // then smart contract releases the nft to the wishmaker
-        // may be using currentOwner as opposed to just the custodian so that we can implement trading inbetween users after they are sold?
-        token.transferNFT(wishes[_itemId], _itemId);
+        // token.transferNFT(wishes[_itemId], _itemId);
+        
         token.markAsSold(_itemId);
         // we need to store the buyers address which is tied to the NFT now
         token.setGifter(_itemId, _from);
@@ -62,5 +62,9 @@ contract Wishlist is SantaToken, Incentive{
     // view points
     function getPoints(address _from) public view returns (uint256) {
         return points[_from];
+    }
+
+    function getOwner(uint256 _itemId) public view returns(address) {
+        return token.ownerOf(_itemId);
     }
 }

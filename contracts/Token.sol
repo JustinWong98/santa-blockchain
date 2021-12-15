@@ -10,7 +10,6 @@ contract SantaToken is ERC721URIStorage{
     // using SafeMath for uint256;
     using Counters for Counters.Counter;
     uint256 public tokenPrice = 200000000000000;
-    address custodian;
     Counters.Counter public _tokenIds;
     NFTForSale[] public _listed;
     struct NFTForSale {
@@ -81,16 +80,16 @@ contract SantaToken is ERC721URIStorage{
         _safeMint(msg.sender, newItemId);
         _setTokenURI(newItemId, _tokenURI);
         // custodian can transfer
-        approve(custodian, newItemId);
+        // approve(custodian, newItemId);
 
         NFTForSale memory token = NFTForSale(
             newItemId,
             price,
             false,
             false,
-            custodian,
-            custodian,
-            custodian,
+            msg.sender,
+            msg.sender,
+            msg.sender,
             _name,
             _description,
             _tokenURI
@@ -106,13 +105,24 @@ contract SantaToken is ERC721URIStorage{
     }
 
     // called by wishlist - custodian account
+    // ERC721 version
+    // function transferNFT(
+    //     // address _currentOwner,
+    //     address _newOwner,
+    //     uint256 _itemId
+    // ) external {
+    //     // use _currentOwner?
+    //     transferFrom(_listed[_itemId].owner, _newOwner, _listed[_itemId].id);
+    // }
+
+    // non ERC721 version
     function transferNFT(
-        // address _currentOwner,
         address _newOwner,
         uint256 _itemId
     ) external {
         // use _currentOwner?
-        transferFrom(_listed[_itemId].owner, _newOwner, _listed[_itemId].id);
+        _listed[_itemId].owner = _newOwner;
+        _listed[_itemId].gifter = msg.sender;
     }
 
     function markAsSold(uint256 _itemId) public {
