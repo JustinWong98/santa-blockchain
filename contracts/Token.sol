@@ -139,6 +139,7 @@ contract SantaToken is ERC721URIStorage{
         return _listed;
     }
 
+    // To remove or refactor
     // function getWishCreated() external view returns (NFTForSale[] memory) {
     //     NFTForSale[] memory wishesCreated = new NFTForSale[](createdWishCounter);
     //     // uint default value is 0
@@ -152,6 +153,7 @@ contract SantaToken is ERC721URIStorage{
     //     return wishesCreated;
     // }
 
+    // To remove or refactor
     // function getWishUncreated() external view returns (NFTForSale[] memory) {
     //     uint uncreatedWishLength = _listed.length - createdWishCounter;
     //     NFTForSale[] memory wishesUncreated = new NFTForSale[](uncreatedWishLength);
