@@ -48,7 +48,8 @@ contract Wishlist is SantaToken, Incentive {
     // redeem incentve
     function redeem(address _from, uint256 _itemId) public {
         // may need to change 0 to how much the NFT costs
-        require(points[_from] > 0, "You do not have enough points!");
+        require(points[_from] > 0, "You do not have any points!");
+        require(points[_from] >= _incentiveList[_itemId].price, "You do not have enough points to redeem this incentive!");
         points[_from]--;
         // incentive nft now points to _from
         transferIncentive(_from, _itemId);
