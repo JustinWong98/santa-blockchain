@@ -6,7 +6,8 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 // increment IDs when minting
 import "@openzeppelin/contracts/utils/Counters.sol";
-contract SantaToken is ERC721URIStorage{
+
+contract SantaToken is ERC721URIStorage {
     // using SafeMath for uint256;
     using Counters for Counters.Counter;
     uint256 public tokenPrice = 200000000000000;
@@ -28,8 +29,8 @@ contract SantaToken is ERC721URIStorage{
         string description;
         string imgURL;
     }
-    mapping(uint => NFTForSale) filterByWishCreated;
-    uint createdWishCounter;
+    mapping(uint256 => NFTForSale) filterByWishCreated;
+    uint256 createdWishCounter;
 
     constructor() ERC721("SantaToken", "SNTA") {
         // _setBaseURI(
@@ -108,30 +109,24 @@ contract SantaToken is ERC721URIStorage{
     }
 
     // display price of NFT
-    function displayContractor(uint256 _itemId) internal view returns (address) {
+    function displayContractor(uint256 _itemId)
+        internal
+        view
+        returns (address)
+    {
         NFTForSale storage nftOnSale = _listed[_itemId];
         return nftOnSale.contractor;
     }
 
     // called by wishlist - custodian account
     // ERC721 version
-    // function transferNFT(
-    //     // address _currentOwner,
-    //     address _newOwner,
-    //     uint256 _itemId
-    // ) external {
-    //     // use _currentOwner?
-    //     transferFrom(_listed[_itemId].owner, _newOwner, _listed[_itemId].id);
-    // }
-
-    // non ERC721 version
     function transferNFT(
+        // address _currentOwner,
         address _newOwner,
         uint256 _itemId
     ) external {
         // use _currentOwner?
-        _listed[_itemId].owner = _newOwner;
-        _listed[_itemId].gifter = msg.sender;
+        _transfer(_listed[_itemId].owner, _newOwner, _listed[_itemId].id);
     }
 
     function markAsSold(uint256 _itemId) public {

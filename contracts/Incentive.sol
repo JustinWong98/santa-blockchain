@@ -7,41 +7,45 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 // increment IDs when minting
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract Incentive{
+contract Incentive {
     using Counters for Counters.Counter;
     Counters.Counter public _incentiveId;
 
     struct incentiveNFT {
         uint256 id;
         bool isClaimed;
+        uint price;
         address owner;
         string name;
         string description;
         string imgURL;
     }
 
-    constructor(){
+    constructor() {
         mintIncentive(
             "Tinaes",
+            1,
             "The true Santa, setting up drawnames for bootcamp students! Ho ho ho",
             "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_111.png"
-            );
+        );
         mintIncentive(
             "Kai",
+            1,
             "The man who gifted us Rocket Academy!",
             "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_110.png"
-            );
+        );
     }
 
     incentiveNFT[] public _incentiveList;
 
-    mapping(uint => incentiveNFT) filterByUnclaimedIncentive;
-    uint incentiveCounter;
+    mapping(uint256 => incentiveNFT) filterByUnclaimedIncentive;
+    uint256 incentiveCounter;
 
     address incentiveCustodian = 0x9E4CD52D63e332C08Ba54e80C9827bcd2cA2aEe5;
 
     function mintIncentive(
         string memory _name,
+        uint _price,
         string memory _description,
         string memory _incentiveURI
     ) public {
@@ -49,6 +53,7 @@ contract Incentive{
         incentiveNFT memory incentiveToken = incentiveNFT(
             newItemId,
             false,
+            _price,
             incentiveCustodian,
             _name,
             _description,
@@ -64,15 +69,15 @@ contract Incentive{
         // address _currentOwner,
         address _newOwner,
         uint256 _itemId
-    ) external {
+    ) public {
         // use _currentOwner?
         // below only works if incentive.sol is erc721 - causes issues as it needs to be abstract to compile
         // transferFrom(_incentiveList[_itemId].owner, _newOwner, _incentiveList[_itemId].id);
-        _incentiveList[_itemId].owner =  _newOwner;
+        _incentiveList[_itemId].owner = _newOwner;
         _incentiveList[_itemId].isClaimed = true;
     }
 
-    function getAllIncentive() external view returns (incentiveNFT[] memory) {
+    function getAllIncentive() public view returns (incentiveNFT[] memory) {
         return _incentiveList;
     }
 

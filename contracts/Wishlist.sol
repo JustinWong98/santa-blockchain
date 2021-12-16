@@ -3,15 +3,13 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./Token.sol";
 import "./Incentive.sol";
-contract Wishlist is SantaToken, Incentive{
+
+contract Wishlist is SantaToken, Incentive {
     // map to wish
     // use the ids generated in our token
     mapping(uint256 => address) public wishes;
     // map inapp currency
     mapping(address => uint256) public points;
-    
-    // import incentives
-    Incentive public incentiveToken;
 
     // if user hasn't joined before
     function initUser(address _from) public {
@@ -40,7 +38,7 @@ contract Wishlist is SantaToken, Incentive{
         smartContractor.transfer(amountPaid);
         // then smart contract releases the nft to the wishmaker
         // token.transferNFT(wishes[_itemId], _itemId);
-        
+
         markAsSold(_itemId);
         // we need to store the buyers address which is tied to the NFT now
         setGifter(_itemId, _from);
@@ -48,12 +46,12 @@ contract Wishlist is SantaToken, Incentive{
     }
 
     // redeem incentve
-    function redeem(address _from, uint _itemId) public {
+    function redeem(address _from, uint256 _itemId) public {
         // may need to change 0 to how much the NFT costs
-        require(points[_from] > 0);
-        points[_from] -= 1;
+        require(points[_from] > 0, "You do not have enough points!");
+        points[_from]--;
         // incentive nft now points to _from
-        incentiveToken.transferIncentive(_from, _itemId);
+        transferIncentive(_from, _itemId);
         // do we need to change owner manually?
     }
 
@@ -62,7 +60,7 @@ contract Wishlist is SantaToken, Incentive{
         return points[_from];
     }
 
-    function getOwner(uint256 _itemId) public view returns(address) {
+    function getOwner(uint256 _itemId) public view returns (address) {
         return ownerOf(_itemId);
     }
 }
