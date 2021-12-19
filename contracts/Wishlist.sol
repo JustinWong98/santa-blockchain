@@ -25,7 +25,7 @@ contract Wishlist is SantaToken, Incentive {
     // if user hasn't joined before
     function initUser(address _from) public {
         uint256 newUserId = _userIds.current();
-        User memory newUser = User(newUserId, 1, 1, _from, true);
+        User memory newUser = User(newUserId, 0, 0, _from, true);
         _users.push(newUser);
         allUsers[_from] = newUser;
         _userIds.increment();
