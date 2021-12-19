@@ -20,6 +20,7 @@ contract Wishlist is SantaToken, Incentive {
     }
 
     User[] public _users;
+    address[] public _userAddresses;
     mapping(address => User) allUsers;
 
     // if user hasn't joined before
@@ -27,6 +28,7 @@ contract Wishlist is SantaToken, Incentive {
         uint256 newUserId = _userIds.current();
         User memory newUser = User(newUserId, 0, 0, _from, true);
         _users.push(newUser);
+        _userAddresses.push(_from);
         allUsers[_from] = newUser;
         _userIds.increment();
     }
@@ -58,6 +60,7 @@ contract Wishlist is SantaToken, Incentive {
             initUser(_from);
         }
         allUsers[_from].currentPoints++;
+        allUsers[_from].totalPoints++;
     }
 
     // redeem incentve
@@ -66,6 +69,10 @@ contract Wishlist is SantaToken, Incentive {
         require(
             allUsers[_from].currentPoints > 0,
             "You do not have enough points!"
+        );
+        require(
+           allUsers[_from].currentPoints >= _incentiveList[_itemId].price,
+           "You do not have the points to redeem this incentive!"
         );
         allUsers[_from].currentPoints--;
         // incentive nft now points to _from
@@ -79,7 +86,12 @@ contract Wishlist is SantaToken, Incentive {
     }
 
     function getAllUsers() public view returns (User[] memory) {
-        return _users;
+        uint currentUsersLength = _userIds.current();
+        User[] memory ret = new User[](currentUsersLength);
+        for (uint i = 0; i < currentUsersLength; i++) {
+            ret[i] = allUsers[_userAddresses[i]];
+        }
+        return ret;
     }
 
     function getOwner(uint256 _itemId) public view returns (address) {
