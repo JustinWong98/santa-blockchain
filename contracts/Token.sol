@@ -13,6 +13,7 @@ contract SantaToken is ERC721URIStorage {
     uint256 public tokenPrice = 200000000000000;
     Counters.Counter public _tokenIds;
     NFTForSale[] public _listed;
+    address custodian;
     struct NFTForSale {
         uint256 id;
         uint256 price;
@@ -37,6 +38,7 @@ contract SantaToken is ERC721URIStorage {
         //     "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/"
         // );
         // custodian should now equal to deployed address, how to get it?
+        custodian = msg.sender;
         mintNFT(
             "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_100.png",
             tokenPrice,
@@ -69,7 +71,6 @@ contract SantaToken is ERC721URIStorage {
         );
     }
 
-    // custodian is our account
     function mintNFT(
         string memory _tokenURI,
         uint256 price,
@@ -89,7 +90,7 @@ contract SantaToken is ERC721URIStorage {
             newItemId,
             price,
             false,
-            false,
+            true,
             msg.sender,
             msg.sender,
             msg.sender,
@@ -101,6 +102,29 @@ contract SantaToken is ERC721URIStorage {
         _listed.push(token);
         _tokenIds.increment();
     }
+
+    // function userMintNFT(
+
+    // ) public {
+    //     uint256 newItemId = _tokenIds.current();
+    //     _safeMint(msg.sender, newItemId);
+    //     _setTokenURI(newItemId, _tokenURI);
+    //     NFTForSale memory token = NFTForSale(
+    //         newItemId,
+    //         price,
+    //         false,
+    //         false,
+    //         msg.sender,
+    //         msg.sender,
+    //         custodian,
+    //         custodian,
+    //         _name,
+    //         _description,
+    //         _tokenURI
+    //     );
+    //     _listed.push(token);
+    //     _tokenIds.increment();
+    // }
 
     // display price of NFT
     function displayPrice(uint256 _itemId) public view returns (uint256) {

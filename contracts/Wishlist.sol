@@ -5,16 +5,30 @@ import "./Token.sol";
 import "./Incentive.sol";
 
 contract Wishlist is SantaToken, Incentive {
+    using Counters for Counters.Counter;
+    Counters.Counter public _userIds;
     // map to wish
     // use the ids generated in our token
     mapping(uint256 => address) public wishes;
     // map inapp currency
-    mapping(address => uint256) public points;
+    struct User {
+        uint256 id;
+        uint256 totalPoints;
+        uint256 currentPoints;
+        address userAddress;
+        bool exists;
+    }
+
+    User[] public _users;
+    mapping(address => User) allUsers;
 
     // if user hasn't joined before
     function initUser(address _from) public {
-        require(points[_from] == 0);
-        points[_from] = 1;
+        uint256 newUserId = _userIds.current();
+        User memory newUser = User(newUserId, 1, 1, _from, true);
+        _users.push(newUser);
+        allUsers[_from] = newUser;
+        _userIds.increment();
     }
 
     // create a wish
@@ -32,24 +46,28 @@ contract Wishlist is SantaToken, Incentive {
         uint256 price = displayPrice(_itemId);
         uint256 amountPaid = msg.value;
         require(amountPaid >= price);
-        // smart contract owns all the NFTS (nft addresses point to smart contract address)
-        // smart contract takes the money
         address payable smartContractor = payable(displayContractor(_itemId));
         smartContractor.transfer(amountPaid);
         // then smart contract releases the nft to the wishmaker
         // token.transferNFT(wishes[_itemId], _itemId);
-
         markAsSold(_itemId);
         // we need to store the buyers address which is tied to the NFT now
         setGifter(_itemId, _from);
-        points[_from]++;
+        // need to check if address exists in our users
+        if (allUsers[_from].exists != true) {
+            initUser(_from);
+        }
+        allUsers[_from].currentPoints++;
     }
 
     // redeem incentve
     function redeem(address _from, uint256 _itemId) public {
         // may need to change 0 to how much the NFT costs
-        require(points[_from] > 0, "You do not have enough points!");
-        points[_from]--;
+        require(
+            allUsers[_from].currentPoints > 0,
+            "You do not have enough points!"
+        );
+        allUsers[_from].currentPoints--;
         // incentive nft now points to _from
         transferIncentive(_from, _itemId);
         // do we need to change owner manually?
@@ -57,7 +75,11 @@ contract Wishlist is SantaToken, Incentive {
 
     // view points
     function getPoints(address _from) public view returns (uint256) {
-        return points[_from];
+        return allUsers[_from].currentPoints;
+    }
+
+    function getAllUsers() public view returns (User[] memory) {
+        return _users;
     }
 
     function getOwner(uint256 _itemId) public view returns (address) {
