@@ -93,6 +93,30 @@
 						"type": "uint256"
 					}
 				],
+				"name": "_itemBase",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
 				"name": "_listed",
 				"outputs": [
 					{
@@ -138,6 +162,11 @@
 					{
 						"internalType": "string",
 						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "baseName",
 						"type": "string"
 					},
 					{
@@ -207,6 +236,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "createBase",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "_itemId",
 						"type": "uint256"
@@ -218,6 +265,31 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllBase",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct SantaToken.itemBase[]",
+						"name": "",
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -272,6 +344,11 @@
 							{
 								"internalType": "string",
 								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "baseName",
 								"type": "string"
 							},
 							{
@@ -364,6 +441,11 @@
 					{
 						"internalType": "string",
 						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_baseName",
 						"type": "string"
 					},
 					{
@@ -529,19 +611,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "tokenPrice",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -663,8 +732,8 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
-			"runs": 200
+			"enabled": true,
+			"runs": 500
 		},
 		"remappings": []
 	},
@@ -758,11 +827,11 @@
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0xa336d3c969e7441bf31c86de50909523e265024817abe8a8cd26cf2944218ee0",
+			"keccak256": "0x05e0cfb5ab8862f42b48e679b1be6ce10d64f13459e4fb48c4f24ce91a8f6828",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://be4ab33de9db6e0a52e8ddc0ff207ae0c4599e000cd2e6e65ea6cdd8520c87fc",
-				"dweb:/ipfs/QmXy5Yd7xsg3GdNi38PbHRtC6a7tqmJoQRz7v4LrqB9D9w"
+				"bzz-raw://5cc19de2fff73b2eacb60679bd98fc4c06cb88af90ac83ec52d8b481a8f63ee9",
+				"dweb:/ipfs/QmWrYqjNZFvHKJJJPMivpCqok4Afe28ckHYwejzLGGq3Cm"
 			]
 		}
 	},

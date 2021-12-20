@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract SantaToken is ERC721URIStorage {
     // using SafeMath for uint256;
     using Counters for Counters.Counter;
-    uint256 public tokenPrice = 200000000000000;
+    // uint256 public tokenPrice = 200000000000000;
     Counters.Counter public _tokenIds;
     NFTForSale[] public _listed;
     address custodian;
@@ -27,9 +27,15 @@ contract SantaToken is ERC721URIStorage {
         // gifter should just be one of our accounts until it is actually gifted
         address gifter;
         string name;
+        string baseName;
         string description;
         string imgURL;
     }
+    struct itemBase {
+        string name;
+        uint256 price;
+    }
+    itemBase[] public _itemBase;
     mapping(uint256 => NFTForSale) filterByWishCreated;
     uint256 createdWishCounter;
 
@@ -39,42 +45,17 @@ contract SantaToken is ERC721URIStorage {
         // );
         // custodian should now equal to deployed address, how to get it?
         custodian = msg.sender;
-        mintNFT(
-            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_100.png",
-            tokenPrice,
-            "CXGod",
-            "The bad boy professional artist/photoshopper - he is a nocturnal creature that only comes alive at night."
-        );
-        mintNFT(
-            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_96.png",
-            tokenPrice,
-            "Akira",
-            "Akira the unfortunate teacher - cursed with a weird rebellious batch for his last batch of bootcamp students."
-        );
-        mintNFT(
-            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_99.png",
-            tokenPrice,
-            "Shing Nan",
-            "CXGod's true arch nemesis - the champion of both shit stirring and libraries."
-        );
-        mintNFT(
-            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_97.png",
-            tokenPrice,
-            "JWong",
-            "His lungs are probably collapsed from using the V for so long."
-        );
-        mintNFT(
-            "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/Screenshot_98.png",
-            tokenPrice,
-            "Jia En the Polar Bear",
-            "Her back hurts from carrying projects."
-        );
+        createBase("Pet Dragon", 200000000000000);
+        createBase("Lesson with Kai", 1000000000000000);
+        createBase("Tickets to Spiderman", 200000000000000);
+        createBase("Project Idea", 600000000000000);
     }
 
     function mintNFT(
         string memory _tokenURI,
         uint256 price,
         string memory _name,
+        string memory _baseName,
         string memory _description
     ) public {
         uint256 newItemId = _tokenIds.current();
@@ -96,6 +77,7 @@ contract SantaToken is ERC721URIStorage {
             msg.sender,
             msg.sender,
             _name,
+            _baseName,
             _description,
             _tokenURI
         );
@@ -165,6 +147,21 @@ contract SantaToken is ERC721URIStorage {
 
     function getAllListed() external view returns (NFTForSale[] memory) {
         return _listed;
+    }
+
+    function getAllBase() external view returns (itemBase[] memory) {
+        return _itemBase;
+    }
+
+    function createBase(
+        string memory _name,
+        uint256 _price
+    ) public {
+        itemBase memory base = itemBase (
+            _name,
+            _price
+        );
+        _itemBase.push(base);
     }
 
     // To remove or refactor
