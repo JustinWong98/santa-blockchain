@@ -41,12 +41,36 @@ contract SantaToken is ERC721URIStorage {
 
     constructor() ERC721("SantaToken", "SNTA") {
         custodian = msg.sender;
-        createBase("Movie Tickets", 200000000000000);
-        createBase("Consultation with Bootcamp student", 1000000000000000);
-        createBase("Code Review", 200000000000000);
-        createBase("Project Idea", 600000000000000);
-        createBase("Pet Dragon", 600000000000000);
-        createBase("Sponsor McDelivery to house", 600000000000000);
+        createBase("Pet Dragon", 100000000000000000);
+        createBase("Cute Puppy", 5000000000000000);
+        createBase("Rocket Academy T-shirt", 1000000000000000);
+        createBase("Grand Candy 5-Ton Chocolate Bar", 7000000000000000);
+        createBase("A Real Unicorn", 80000000000000000);
+        createBase("Gingerbread Bungalow", 80000000000000000);
+        createBase("Balenciaga Grocery Bag", 7000000000000000);
+        createBase("Silver Stapler Pins", 3000000000000000);
+        createBase("Gold-Coated Toilet Paper", 5000000000000000);
+        createBase("Diamond-Coated Contact Lenses", 2000000000000000);
+        createBase("Ruby-Studded Pen", 1000000000000000);
+        createBase("Crystal Chess Set", 2000000000000000);
+        createBase("Magnetic Floating Bed", 12000000000000000);
+        createBase("Snow Machine", 1000000000000000);
+        createBase("Pet Pig", 3000000000000000);
+        createBase("Bathtub of Victoria Ice Cream", 6000000000000000);
+        createBase("Coal", 1000000000000000);
+        createBase("Kanye West Designed T-shirt", 1000000000000000);
+        createBase("Parada Paper Clips", 1000000000000000);
+        createBase("Poppy Flowers by van Gogh", 60000000000000000);
+        createBase("Pet Dinosaur", 70000000000000000);
+        createBase("Invisibility Cloak", 40000000000000000);
+        createBase("Real Magic Wand", 10000000000000000);
+        createBase("Magic Carpet", 30000000000000000);
+        createBase("Flying Broomstick", 20000000000000000);
+        createBase("Mistletoe", 1000000000000000);
+        createBase("School Bus", 7000000000000000);
+        createBase("Time Machine", 20000000000000000);
+        createBase("Pony", 4000000000000000);
+        createBase("Nerf Gun", 1000000000000000);
     }
 
     function mintNFT(

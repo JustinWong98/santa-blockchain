@@ -68,7 +68,7 @@ contract Incentive {
             "9"
         );
         mintIncentive(
-            "Ruldoph Imposter",
+            "Rudolph Imposter",
             1,
             "10"
         );
@@ -169,7 +169,7 @@ contract Incentive {
             "32"
         );
         mintIncentive(
-            "Ruldoph",
+            "Rudolph",
             1,
             "33"
         );
