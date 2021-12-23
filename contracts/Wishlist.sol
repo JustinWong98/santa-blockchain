@@ -85,10 +85,9 @@ contract Wishlist is SantaToken, Incentive {
         return allUsers[_from].currentPoints;
     }
 
-    function getAllUsers() public view returns (User[] memory) {
-        uint currentUsersLength = _userIds.current();
-        User[] memory ret = new User[](currentUsersLength);
-        for (uint i = 0; i < currentUsersLength; i++) {
+    function getAllUsers() external view returns (User[] memory) {
+        User[] memory ret = new User[](_userIds.current());
+        for (uint i = 0; i < _userIds.current(); i++) {
             ret[i] = allUsers[_userAddresses[i]];
         }
         return ret;
