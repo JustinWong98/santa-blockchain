@@ -17,22 +17,171 @@ contract Incentive {
         uint price;
         address owner;
         string name;
-        string description;
         string imgURL;
     }
 
     constructor() {
         mintIncentive(
-            "Tinaes",
+            "Green Sweater Reindeer",
             1,
-            "The true Santa, setting up drawnames for bootcamp students! Ho ho ho",
-            "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_111.png"
+            "1"
         );
         mintIncentive(
-            "Kai",
+            "Pingu The Penguin",
             1,
-            "The man who gifted us Rocket Academy!",
-            "https://gateway.pinata.cloud/ipfs/QmNjaxV3gTr4i7X27XTRaJGN48uBLatGiy3stf9yLCNgJ1/Screenshot_110.png"
+            "2"
+        );
+        mintIncentive(
+            "Gingerbread man",
+            1,
+            "3"
+        );
+        mintIncentive(
+            "Santa Claus",
+            1,
+            "4"
+        );
+        mintIncentive(
+            "Santa's Little Helper 1",
+            1,
+            "5"
+        );
+
+        mintIncentive(
+            "Frosty",
+            1,
+            "6"
+        );
+        mintIncentive(
+            "Easter Bunny",
+            1,
+            "7"
+        );
+        mintIncentive(
+            "Easter Bunny Imposter",
+            1,
+            "8"
+        );
+        mintIncentive(
+            "Sally the Nice Girl",
+            1,
+            "9"
+        );
+        mintIncentive(
+            "Ruldoph Imposter",
+            1,
+            "10"
+        );
+        mintIncentive(
+            "Sadie the Naughty Girl",
+            1,
+            "11"
+        );
+        mintIncentive(
+            "Girl with the Snowman Shirt",
+            1,
+            "12"
+        );
+        mintIncentive(
+            "Gabriel the Angel",
+            1,
+            "13"
+        );
+        mintIncentive(
+            "Sam the Nice Boy",
+            1,
+            "14"
+        );
+        mintIncentive(
+            "Santa's Little Helper 2",
+            1,
+            "15"
+        );
+        mintIncentive(
+            "A Bright Kid",
+            1,
+            "16"
+        );
+
+        mintIncentive(
+            "Frosty Imposter Girl",
+            1,
+            "17"
+        );
+        mintIncentive(
+            "The Giving Tree",
+            1,
+            "18"
+        );
+        mintIncentive(
+            "Kane the Candy Cane",
+            1,
+            "19"
+        );
+        mintIncentive(
+            "Earmuff Boy",
+            1,
+            "20"
+        );
+        mintIncentive(
+            "Earmuff Girl",
+            1,
+            "21"
+        );
+        mintIncentive(
+            "The Greatest Gift of All",
+            1,
+            "22"
+        );
+        mintIncentive(
+            "Polar Bear",
+            1,
+            "23"
+        );
+        mintIncentive(
+            "Simon the Ice King",
+            1,
+            "24"
+        );
+        mintIncentive(
+            "Globehead",
+            1,
+            "25"
+        );
+        mintIncentive(
+            "Frosty Imposter Boy",
+            1,
+            "26"
+        );
+        mintIncentive(
+            "Angel 2",
+            1,
+            "27"
+        );
+        mintIncentive(
+            "Christmas Tree Imposter",
+            1,
+            "31"
+        );
+        mintIncentive(
+            "This Kid's a star!",
+            1,
+            "32"
+        );
+        mintIncentive(
+            "Ruldoph",
+            1,
+            "33"
+        );
+        mintIncentive(
+            "Toy Soldier",
+            1,
+            "39"
+        );
+        mintIncentive(
+            "Jia En The Polar Bear",
+            1,
+            "50"
         );
     }
 
@@ -46,7 +195,6 @@ contract Incentive {
     function mintIncentive(
         string memory _name,
         uint _price,
-        string memory _description,
         string memory _incentiveURI
     ) public {
         uint256 newItemId = _incentiveId.current();
@@ -56,7 +204,6 @@ contract Incentive {
             _price,
             incentiveCustodian,
             _name,
-            _description,
             _incentiveURI
         );
         _incentiveList.push(incentiveToken);

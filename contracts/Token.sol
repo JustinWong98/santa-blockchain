@@ -40,15 +40,13 @@ contract SantaToken is ERC721URIStorage {
     uint256 createdWishCounter;
 
     constructor() ERC721("SantaToken", "SNTA") {
-        // _setBaseURI(
-        //     "https://gateway.pinata.cloud/ipfs/QmNhz1N3jYmWAArDVwEPorcjJqaEQzxj9HMM2vx9bXuGFn/"
-        // );
-        // custodian should now equal to deployed address, how to get it?
         custodian = msg.sender;
-        createBase("Pet Dragon", 200000000000000);
-        createBase("Lesson with Kai", 1000000000000000);
-        createBase("Tickets to Spiderman", 200000000000000);
+        createBase("Movie Tickets", 200000000000000);
+        createBase("Consultation with Bootcamp student", 1000000000000000);
+        createBase("Code Review", 200000000000000);
         createBase("Project Idea", 600000000000000);
+        createBase("Pet Dragon", 600000000000000);
+        createBase("Sponsor McDelivery to house", 600000000000000);
     }
 
     function mintNFT(
@@ -84,29 +82,6 @@ contract SantaToken is ERC721URIStorage {
         _listed.push(token);
         _tokenIds.increment();
     }
-
-    // function userMintNFT(
-
-    // ) public {
-    //     uint256 newItemId = _tokenIds.current();
-    //     _safeMint(msg.sender, newItemId);
-    //     _setTokenURI(newItemId, _tokenURI);
-    //     NFTForSale memory token = NFTForSale(
-    //         newItemId,
-    //         price,
-    //         false,
-    //         false,
-    //         msg.sender,
-    //         msg.sender,
-    //         custodian,
-    //         custodian,
-    //         _name,
-    //         _description,
-    //         _tokenURI
-    //     );
-    //     _listed.push(token);
-    //     _tokenIds.increment();
-    // }
 
     // display price of NFT
     function displayPrice(uint256 _itemId) public view returns (uint256) {
@@ -153,14 +128,8 @@ contract SantaToken is ERC721URIStorage {
         return _itemBase;
     }
 
-    function createBase(
-        string memory _name,
-        uint256 _price
-    ) public {
-        itemBase memory base = itemBase (
-            _name,
-            _price
-        );
+    function createBase(string memory _name, uint256 _price) public {
+        itemBase memory base = itemBase(_name, _price);
         _itemBase.push(base);
     }
 
