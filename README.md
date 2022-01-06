@@ -54,7 +54,6 @@ You will need to install [Metamask](https://metamask.io) to use this app.
 
 MIT
 
-   [dill]: <https://github.com/joemccann/dillinger>
    [frontend]: <https://github.com/leechuanxin/santa-frontend>
    [smart-contract]: <https://github.com/JustinWong98/santa-blockchain>
    [Truffle]: <https://trufflesuite.com/truffle/>
