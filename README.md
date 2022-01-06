@@ -1,28 +1,34 @@
-# Wish upon a Santa
-## Get into the spirit of giving with Blockchain and NFTs!
+# Wish Upon A Santa
+## Get into the spirit of gifting with Blockchain and NFTs!
 
-Wish upon a Santa is an app that allows users to grant wishes made by other users using Ether(ETH), but for this project, we use a fake ETH currency for testing purposes, so anyone can come and use the website without worrying about having to spend real currency.
+Wish upon a Santa is an online Christmas-themed wishing well that allows users to make wishes, as well as grant wishes made by other users.
 
-The concept behind this app is that the wishes available are items that will be delivered by the website once someone buys it on their behalf(like an online store). The prices are set based on an available list of items - and the ETH goes to the store. To incentivise users to get into the spirit of gifting, we give 'Goodwill' points which can be used to claim NFT badges that can be displayed on one's profile, as well as a leaderboard ranking for the top wish-granters.
+This decentralised application (dApp) is deployed on the Rinkeby testnet instead of the Ethereum mainnet, so that anyone can come and use the site without spending actual Ether (ETH) to make and grant wishes.
 
-Here are the links to our [frontend](https://github.com/leechuanxin/santa-frontend) and [smart contract](https://github.com/JustinWong98/santa-blockchain).
+Similar to an online store, we have a tongue-in-cheek catalogue and users can **wish for items** on the catalogue. Just like tossing a coin into a wishing well, only a small [gas fee](https://www.investopedia.com/terms/g/gas-ethereum.asp#:~:text=Gas%20fees%20are%20payments%20made,spend%20on%20a%20particular%20transaction.) in ETH has to be paid for **making a wish**.
+
+*Granting a wish* works like purchasing an item from an online store to gift to someone else. Every item in our catalogue has a preset price. When *granting a wish*, a user has to pay the price of the item another user has wished for. The price paid in ETH for *granting a wish* goes to the smart contract (ie. our "online store", or us).
+
+To incentivise users to get into the spirit of gifting, the dApp rewards Goodwill points to users who have *granted wishes*. Goodwill points can be used to claim NFT badges that can be displayed on one's profile. The dApp also has a leaderboard to feature the top wish granters.
+
+Here are the links to our [frontend](https://github.com/leechuanxin/santa-frontend), [Express backend](https://github.com/leechuanxin/santa-express), and [smart contract](https://github.com/JustinWong98/santa-blockchain) repositories.
 
 ## Features
 
-- Allows users to mint their own wishes
+- Allows users to make their own wishes (in the form of minting them as NFT tokens)
 - Users can grant wishes for others through cryptocurrency
 - Compete for the top positions in the leaderboard through granting wishes
 - Redeem NFT badges as a reward for granting wishes
-- See all the wishes a user made or granted, and the badges they claimed
+- See all the wishes a user has made or granted, and the badges they have claimed
 
 ## Tech
 
 We use:
 
-- [Solidity] - For coding our smart contract on the blockchain
-- [PostgreSQL] - Database to tie username to wallet address - as the username does not need to be stored on the blockchain
-- [React] - For frontend design
-- [React Bootstrap] - Bootstrap components for React
+- [Solidity] - For coding our smart contract on the blockchain. With our smart contract as our "primary backend", we store ownership information of the wishes made, and the NFT badges redeemed.
+- [Express](https://expressjs.com/) - Our "secondary backend", for cosmetic purposes: usernames will be attached to each wallet address for identification purposes.
+- [web3.js](https://web3js.readthedocs.io/en/v1.5.2/) - To interact with our smart contract, as well as offer cryptocurrency transactions for making wishes (by paying a [gas fee](https://www.investopedia.com/terms/g/gas-ethereum.asp#:~:text=Gas%20fees%20are%20payments%20made,spend%20on%20a%20particular%20transaction.)) and granting wishes (by paying the price of the item wished to the smart contract, ie. us).
+- [React] - Front-end development, with Bootstrap as our key UI library.
 
 ## Usage
 You can visit our deployed app [here](https://damp-bayou-29307.herokuapp.com)
